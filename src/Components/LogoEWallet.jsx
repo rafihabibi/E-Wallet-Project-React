@@ -1,12 +1,12 @@
-import IconWallet from "../assets/icons/Money-Wallet.svg"
+import IconWallet from "../assets/icons/Money-Wallet.svg";
 
-function LogoEWallet() {
+function LogoEWallet({teksColor = "text-blue-600"}) {
     return(
-        <div className="flex items-center gap-2 text-blue-500 font-bold">
+        <div className="flex items-center gap-2">
             <img src={IconWallet} alt="logo wallet"/>
-            <p className="">E-Wallet</p>
+            <p className={teksColor}>E-Wallet</p>
         </div>
     );
 }
 
-export default LogoEWallet
+export default LogoEWallet;

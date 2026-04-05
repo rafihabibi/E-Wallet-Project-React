@@ -1,7 +1,7 @@
 function Dashboard() {
     return(
-        <h1>Dshboard</h1>
+        <h1>INI Dshboard</h1>
     );
 }
 
-export default Dashboard
+export default Dashboard;

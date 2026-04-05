@@ -11,4 +11,4 @@ function AuthLayout({image, children}) {
     );
 }
 
-export default AuthLayout
+export default AuthLayout;
