@@ -1,5 +1,7 @@
 import MoneyIcon from '../assets/icons/Moneyicon.svg';
 import MobileFeature from '../assets/mobileFeature.svg';
+import ShieldDone from '../assets/icons/ShieldDone.svg';
+import UserCheck from '../assets/icons/userCheck.svg';
 import WaveDown from '../assets/waveDown.svg';
 import WaveUp from '../assets/waveUp.svg';
 
@@ -8,7 +10,7 @@ export default function Feature() {
         <section className=" flex flex-col md:flex-row justify-between items-center px-6 md:px-20 pt-16 pb-29 md:pb-22 relative">
             <div className='absolute inset-0 -z-10 flex flex-col '>
                 <img src={WaveUp} alt="waveUP" className=''/>
-                <div className="bg-[#2948FF] grow w-full"></div>
+                <div className="bg-[#2948FF]grow w-full"></div>
                 <img src={WaveDown} alt="waveDown" className=''/>
             </div>
 
@@ -31,20 +33,20 @@ export default function Feature() {
                 </div>
 
                  <div className="flex flex-row gap-4 items-center ">
-                    <img src={MoneyIcon} alt="Money Icon" className='rounded-full bg-white border w-10 h-10 p-2'/>
+                    <img src={ShieldDone} alt="shield Icon" className='rounded-full bg-white border w-10 h-10 p-2'/>
                 
                     <div className="flex flex-col">
-                        <h2 className='font-bold'>Small Fee</h2>
-                        <p>We only charge 5% of every success transaction done in Zwallet app.</p>
+                        <h2 className='font-bold'>Data Secured</h2>
+                        <p>All your data is secured properly in our system and it’s encrypted.</p>
                     </div>
                 </div>
 
                  <div className="flex flex-row gap-4 items-center">
-                    <img src={MoneyIcon} alt="Money Icon" className='rounded-full bg-white border w-10 h-10 p-2'/>
+                    <img src={UserCheck} alt="Money Icon" className='rounded-full bg-white border w-10 h-10 p-2'/>
                 
                     <div className="flex flex-col">
-                        <h2 className='font-bold'>Small Fee</h2>
-                        <p>We only charge 5% of every success transaction done in Zwallet app.</p>
+                        <h2 className='font-bold'>User Friendly</h2>
+                        <p>Zwallet come up with modern and sleek design and not complicated.</p>
                     </div>
                 </div>
                 <div className='md:pt-5  text-center'>
