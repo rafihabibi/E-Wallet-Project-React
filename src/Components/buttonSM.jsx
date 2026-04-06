@@ -1,3 +1,11 @@
+/**
+ * Komponen untuk button Sign In Social Media
+ * @param {object} props
+ * @param {string} props.icon - icon untuk social media
+ * @param {string} props.label - memeberikan info buttonnya
+ * @returns {JSX.element}
+ */
+
 export default function ButtonSM({icon, label}) {
     return(
         <div className="py-1">

@@ -1,3 +1,10 @@
+/**
+ * Komponen untuk menambahkan Button
+ * @param {object} props
+ * @param {string} props.label
+ * @returns {JSX.Element}
+ */
+
 export default function ButtonSubmit({ label }) {
     return(
         <div className="py-3 ">
