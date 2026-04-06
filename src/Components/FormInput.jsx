@@ -1,5 +1,17 @@
 import {useState} from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+/**
+ * Komponen untuk menampilkan isi form
+ * @param {object} props
+ * @param {string} props.label - Memberikan nama Input
+ * @param {string} props.type - Memberikan type input
+ * @param {string} props.icon -  Memberikan Icon gambar sesuai input
+ * @param {string} props.placeholder - berikan tampilan teks dalam input
+ * @param {string} props.value -  berikan nilai inputan nya
+ * @param {function} props.onChange - Mengupdate input value
+ * @returns {JSX.Element}
+ */
+
 
 function FormInput({label, type, placeholder, icon, onChange, value}) {
     const [togglePass, setTogglePass] = useState(false);
