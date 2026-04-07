@@ -7,13 +7,12 @@ import { Eye, EyeOff } from 'lucide-react';
  * @param {string} props.type - Memberikan type input
  * @param {string} props.icon -  Memberikan Icon gambar sesuai input
  * @param {string} props.placeholder - berikan tampilan teks dalam input
- * @param {string} props.value -  berikan nilai inputan nya
- * @param {function} props.onChange - Mengupdate input value
+ *@param {object} props.authData - untuk menyimpan data user.
  * @returns {JSX.Element}
  */
 
 
-function FormInput({label, type, placeholder, icon, onChange, value}) {
+function FormInput({label, type, placeholder, icon, authData  }) {
     const [togglePass, setTogglePass] = useState(false);
     const isPassword = type === "password";
     const inputType = isPassword ? (togglePass ? "text" : "password") : type;
@@ -26,8 +25,7 @@ function FormInput({label, type, placeholder, icon, onChange, value}) {
                 <input
                     type={inputType}
                     placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}
+                     {...authData}
                     className="w-full"
                 />
                 {isPassword && (

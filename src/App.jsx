@@ -3,6 +3,7 @@ import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Register from './pages/Register.jsx';
 import LandingPages from './pages/LandingPages.jsx';
+import SetNominal from './pages/SetNominal.jsx';
 
 
 
@@ -12,6 +13,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
+      <Route path='/transfer'element={<SetNominal/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
