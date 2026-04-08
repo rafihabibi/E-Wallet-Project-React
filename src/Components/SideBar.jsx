@@ -16,7 +16,7 @@ export default function Sidebar({activePage}) {
                 <span className='hidden md:block'>Dashborad</span>
                 </li></NavLink>
 
-                <NavLink to="/transfer"><li className={`${activePage === "transfer" ? "bg-primary text-white" : "text-[#aaaaaa] hover:bg-gray-100"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl hover:bg-gray-100 text-[#AAAAAA] cursor-pointer`}><img src={Send} alt="Send"/>
+                <NavLink to="/transfer/:id"><li className={`${activePage === "transfer" ? "bg-primary text-white" : "text-[#aaaaaa] hover:bg-gray-100"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl hover:bg-gray-100 text-[#AAAAAA] cursor-pointer`}><img src={Send} alt="Send"/>
                 <span className='hidden md:block'>Transfer</span>
                 </li></NavLink>
                 

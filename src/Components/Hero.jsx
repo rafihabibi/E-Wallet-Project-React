@@ -9,7 +9,7 @@ export default function Hero() {
             <h2 className='text-4xl font-bold pb-2'>Smart Way to Your <br/> Financial Business</h2>
             <p className='text-[#4F5665] text-sm py-4'>We bring you a mobile app for banking problems that <br/> oftenly wasting much of your times.</p>
         <div className='pb-5'>
-            <button className='bg-[#2948FF] border rounded-md text-white px-2.5 py-2.5 '>Get Started</button>
+            <button className='bg-primary border rounded-md text-white px-2.5 py-2.5 '>Get Started</button>
         </div>
         <div>
             <p>Available on</p>

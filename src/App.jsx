@@ -13,7 +13,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path='/transfer'element={<SetNominal/>}/>
+      <Route path='/transfer/:id'element={<SetNominal/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>

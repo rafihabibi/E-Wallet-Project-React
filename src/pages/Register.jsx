@@ -35,18 +35,6 @@ function Register() {
             navigate("/login");
         console.log("disimpan:", data);
     };
-    // const {email, password, confirmPass, errors, setEmail, setPassword, setConfirmPass, validate} = useRegister();
-    
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     const isValid = validate();
-    //     if(isValid) {
-    //         
-
-    //     }
-    // };
     return(
         <>
         <AuthLayout image={<img src={ImageRegister} alt="Register"/>}>

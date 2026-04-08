@@ -10,7 +10,7 @@ export default function Feature() {
         <section className=" flex flex-col md:flex-row justify-between items-center px-6 md:px-20 pt-16 pb-29 md:pb-22 relative">
             <div className='absolute inset-0 -z-10 flex flex-col '>
                 <img src={WaveUp} alt="waveUP" className=''/>
-                <div className="bg-[#2948FF]grow w-full"></div>
+                <div className="bg-primary grow w-full"></div>
                 <img src={WaveDown} alt="waveDown" className=''/>
             </div>
 

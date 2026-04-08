@@ -3,12 +3,14 @@ import Sidebar from "../Components/SideBar";
 import SendBlue from '../assets/icons/sendBlue.svg';
 import PeopleInfo from '../Components/PeopleInfo.jsx';
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import PinPopUp from "../Components/pinPopUp.jsx";
 import Stepper from "../Components/Stepper.jsx";
+import { useParams } from 'react-router';
 
 export default function SetNominal() {
     const [popUp, setPopup] = useState(false);
+    const {userId} = useParams();
     return (
         <div className="min-h-screen bg-[#FAFAFA]">
             <Header />
@@ -18,7 +20,7 @@ export default function SetNominal() {
                 <main className="flex-1 p-4 md:p-8">
                     <div className="flex items-center gap-3 mb-8">
                         <img src={SendBlue} alt="send icon" />
-                        <h2 className="text-xl font-bold text-[#3A3D42]">Transfer Money</h2>
+                       <h2  className="text-xl font-bold text-[#3A3D42]">Transfer Money to {userId}</h2>
                     </div>
                     <div className="bg-white rounded-xl shadow-sm border border-[#EAEAEA] p-6 md:p-10">
                         <div className="flex items-center justify-start gap-4 mb-10">
@@ -32,7 +34,7 @@ export default function SetNominal() {
                                 <label className="block text-[#7A7886] mb-2">Amount</label>
                                 <p className="text-sm text-[#7A7886] mb-4">Type the amount you want to transfer...</p>
                                 <div className="relative">
-                                    <input type="text" placeholder="Enter Nominal Transfer" className="w-full border border-border rounded-lg p-4 pl-12 focus:outline-primary" />
+                                    <input type="number" placeholder="Enter Nominal Transfer" className="w-full border border-border rounded-lg p-4 pl-12 focus:outline-primary" />
                                 </div>
                             </div>
 
