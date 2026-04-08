@@ -8,7 +8,7 @@ import Github from '../assets/icons/github.svg';
 import Email from '../assets/icons/email.svg';
 export default function Footer() {
     return(
-        <section className='bg-[#2948FF] flex flex-col'>
+        <section className='bg-primary flex flex-col'>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-4 text-white px-5 md:px-20 py-16'>
                 <div >
                 <LogoEwallet teksColor='text-white' teksFont='text-2xl font-sm'/>
