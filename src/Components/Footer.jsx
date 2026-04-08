@@ -41,7 +41,7 @@ export default function Footer() {
                         <img src={Email} alt="Email Icon" />
                         <input type="text" placeholder='Enter Your Email' className='border rounded-md' />
                     </div>
-                    <button className='border bg-white text-[#2948FF] rounded-md py-2'>Subscribe</button>
+                    <button className='border bg-white text-primary rounded-md py-2'>Subscribe</button>
                 </div>
             </div>
             <hr className="mt-10 mb-5 border-gray-400" />
