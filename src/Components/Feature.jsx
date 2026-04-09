@@ -1,4 +1,4 @@
-import MoneyIcon from "../assets/icons/moneyicon.svg";
+import MoneyIcon from "../assets/icons/icon-money.svg";
 import MobileFeature from "../assets/mobileFeature.svg";
 import ShieldDone from "../assets/icons/ShieldDone.svg";
 import UserCheck from "../assets/icons/userCheck.svg";
