@@ -16,7 +16,6 @@ export default function History() {
   const currentPage = parseInt(searchParams.get("page")) || 1;
   const itemsPerPage = 5;
 
-  // 1. Data AllHistory yang sudah diupdate dengan image & isIncome
   const allHistory = [
     {
       id: 1,
@@ -124,7 +123,6 @@ export default function History() {
         />
 
         <main className="flex-1 p-4 md:p-8">
-          {/* 2. Judul Utama di Luar Kotak */}
           <div className="flex items-center gap-3 mb-6">
             <span className="text-primary text-2xl"></span>
             <img src={HistoryBlue} alt="" />
@@ -133,7 +131,7 @@ export default function History() {
             </h2>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-[#EAEAEA] p-8 w-full">
+          <div className="bg-white rounded-2xl border border-[#EAEAEA] p-8 w-full">
             <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
               <h3 className="font-bold text-lg text-[#3A3D42]">
                 Find Transaction
@@ -162,14 +160,12 @@ export default function History() {
                   className={`flex items-center justify-between p-4 rounded-lg ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
                 >
                   <div className="flex items-center gap-4 w-1/3">
-                    {/* 3. Menampilkan Gambar Avatar */}
                     <img
                       src={item.image}
                       alt={item.name}
                       className="w-10 h-10 rounded-full object-cover"
                     />
 
-                    {/* 4. Warna Text Name jadi Abu-abu */}
                     <span className="text-[#7A7886] text-sm md:text-base">
                       {item.name}
                     </span>
@@ -199,7 +195,7 @@ export default function History() {
 
             <div className="flex items-center justify-between mt-8 text-sm text-[#7A7886]">
               <span>
-                Show {paginatedData.length} History of {filteredData.length}{" "}
+                Show {paginatedData.length} History of {filteredData.length}
                 History
               </span>
 

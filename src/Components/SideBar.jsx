@@ -19,7 +19,7 @@ export default function Sidebar({ activePage, isactive }) {
               src={activePage === "dashboard" ? DashboardWhite : DashboardGrey}
               alt="Dashboard"
             />
-            <span className="hidden md:block">Dashborad</span>
+            <span className="hidden md:block">Dashboard</span>
           </li>
         </NavLink>
 
@@ -91,19 +91,23 @@ export default function Sidebar({ activePage, isactive }) {
           </li>
         </NavLink>
 
-        <li
-          className={`${activePage === "profile" ? "bg-primary text-white hover:bg-blue-600" : "text-[#aaaaaa] hover:bg-gray-300"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl  text-[#AAAAAA] cursor-pointer`}
-        >
-          <img src={TwoUsers} alt="TwoUser" />
-          <span className="hidden md:block">Profile</span>
-        </li>
+        <NavLink to="/profile">
+          <li
+            className={`${activePage === "profile" ? "bg-primary text-white hover:bg-blue-600" : "text-[#aaaaaa] hover:bg-gray-300"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl  text-[#AAAAAA] cursor-pointer`}
+          >
+            <img src={TwoUsers} alt="TwoUser" />
+            <span className="hidden md:block">Profile</span>
+          </li>
+        </NavLink>
 
-        <li
-          className={`${activePage === "keluar" ? "bg-primary text-white hover:bg-blue-600" : "text-[#aaaaaa] hover:bg-gray-100"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl  text-[#AAAAAA] cursor-pointer`}
-        >
-          <img src={LogOut} alt="lOGOUT" />
-          <span className="hidden md:block">Keluar</span>
-        </li>
+        <NavLink to="/dashboard">
+          <li
+            className={`${activePage === "keluar" ? "bg-primary text-white hover:bg-blue-600" : "text-[#aaaaaa] hover:bg-gray-100"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl  text-[#AAAAAA] cursor-pointer`}
+          >
+            <img src={LogOut} alt="lOGOUT" />
+            <span className="hidden md:block">Keluar</span>
+          </li>
+        </NavLink>
       </ul>
     </aside>
   );

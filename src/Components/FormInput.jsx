@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 /**
  * Komponen untuk menampilkan isi form
  * @param {object} props
@@ -11,31 +11,34 @@ import { Eye, EyeOff } from 'lucide-react';
  * @returns {JSX.Element}
  */
 
+function FormInput({ label, type, placeholder, icon, authData }) {
+  const [togglePass, setTogglePass] = useState(false);
+  const isPassword = type === "password";
+  const inputType = isPassword ? (togglePass ? "text" : "password") : type;
 
-function FormInput({label, type, placeholder, icon, authData  }) {
-    const [togglePass, setTogglePass] = useState(false);
-    const isPassword = type === "password";
-    const inputType = isPassword ? (togglePass ? "text" : "password") : type;
-
-    return(
-        <div className="py-1">
-            <label className="text-base">{label}</label>
-            <div className="flex gap-2 border border-[#ccc] rounded-xl bg-gray-100 py-1 px-2">
-                <img src={icon} alt="Descriptions" />
-                <input
-                    type={inputType}
-                    placeholder={placeholder}
-                     {...authData}
-                    className="w-full"
-                />
-                {isPassword && (
-                    <button className='cursor-pointer' type='button' onClick={() => setTogglePass(!togglePass)}>
-                        {togglePass ? <EyeOff size={16}/> : <Eye size={16}/>}
-                    </button>
-                )}
-            </div>
-        </div>
-    );
+  return (
+    <div className="py-3">
+      <label className="text-base">{label}</label>
+      <div className="flex gap-3 border border-[#ccc] rounded-xl bg-gray-100 py-2 px-2">
+        <img src={icon} alt="Descriptions" />
+        <input
+          type={inputType}
+          placeholder={placeholder}
+          {...authData}
+          className="w-full"
+        />
+        {isPassword && (
+          <button
+            className="cursor-pointer"
+            type="button"
+            onClick={() => setTogglePass(!togglePass)}
+          >
+            {togglePass ? <EyeOff size={16} /> : <Eye size={16} />}
+          </button>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default FormInput;

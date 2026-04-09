@@ -5,11 +5,16 @@ import PeopleInfo from "../Components/PeopleInfo.jsx";
 import { useState } from "react";
 import PinPopUp from "../Components/pinPopUp.jsx";
 import Stepper from "../Components/Stepper.jsx";
-import { useParams } from "react-router";
+import Ghaluh from "../assets/profileGaluh.svg";
+import PopUpSucces from "../Components/PopUpSuccess.jsx";
 
 export default function SetNominal() {
-  const [popUp, setPopup] = useState(false);
-  const { userId } = useParams();
+  const [popUpPin, setPopUpPin] = useState(false);
+  const [popUpSucc, setPopUpSucc] = useState(false);
+  const handleSucces = () => {
+    setPopUpPin(false);
+    setPopUpSucc(true);
+  };
   return (
     <div className="min-h-screen bg-[#FAFAFA] pb-13 md:pb-0">
       <Header />
@@ -23,16 +28,14 @@ export default function SetNominal() {
         <main className="flex-1 p-4 md:p-8">
           <div className="flex items-center gap-3 mb-8">
             <img src={SendBlue} alt="send icon" />
-            <h2 className="text-xl font-bold text-[#3A3D42]">
-              Transfer Money to {userId}
-            </h2>
+            <h2 className="text-xl font-bold text-[#3A3D42]">Transfer Money</h2>
           </div>
           <div className="bg-white rounded-xl shadow-sm border border-[#EAEAEA] p-6 md:p-10">
             <div className="flex items-center justify-start gap-4 mb-10">
               <Stepper isactive="set-nominal" />
             </div>
             <div className="bg-[#F9F9F9] rounded-xl p-5 mb-10 flex items-center justify-between">
-              <PeopleInfo />
+              <PeopleInfo img={Ghaluh} />
             </div>
             <div className="flex flex-col gap-8">
               <div>
@@ -60,7 +63,7 @@ export default function SetNominal() {
 
             <div className="flex justify-end mt-10">
               <button
-                onClick={() => setPopup(true)}
+                onClick={() => setPopUpPin(true)}
                 className="bg-primary text-white  py-4 rounded-xl  w-full hover:bg-blue-600 cursor-pointer"
               >
                 Submit & Transfer
@@ -69,7 +72,12 @@ export default function SetNominal() {
           </div>
         </main>
       </div>
-      <PinPopUp isOpen={popUp} onClose={() => setPopup(false)} />
+      <PinPopUp
+        isOpen={popUpPin}
+        onClose={() => setPopUpPin(false)}
+        onSucces={handleSucces}
+      />
+      <PopUpSucces isOpen={popUpSucc} onClose={() => setPopUpSucc(false)} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import PinWrapper from "./PinWrapper.jsx";
 
-export default function PinPopUp({ isOpen, onClose }) {
+export default function PinPopUp({ isOpen, onClose, onSucces }) {
   // const [pin, setPin] = useState(new Array(6).fill(""));
   return (
     <>
@@ -22,19 +22,11 @@ export default function PinPopUp({ isOpen, onClose }) {
             <div className="pb-10">
               <PinWrapper />
             </div>
-            {/* <div className="flex justify-between gap-2 mb-10">
-                    {pin.map((_, index) => (
-                        <input key={index} type="text" value={pin[index]} onChange={(e) => {
-                                const newPin = [...pin];
-                                newPin[index] = e.target.value.slice(0, 1);
-                                setPin(newPin);
-                            }}
-                            maxLength="1"
-                            className="w-12 h-12 text-center border-b"
-                        />
-                    ))}
-                </div> */}
-            <button className="w-full bg-primary text-white py-4 rounded-xl font-bold mb-4 cursor-pointer hover:bg-blue-800">
+
+            <button
+              onClick={onSucces}
+              className="w-full bg-primary text-white py-4 rounded-xl font-bold mb-4 cursor-pointer hover:bg-blue-800"
+            >
               {" "}
               Next
             </button>

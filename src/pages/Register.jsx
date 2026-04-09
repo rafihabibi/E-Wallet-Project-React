@@ -97,7 +97,10 @@ function Register() {
           <BtnSubmit label="Register" />
         </form>
         <p className="text-center m-2 text-[#4F5665]">
-          Have An Account? <Link to="/login">Login</Link>
+          Have An Account?
+          <Link to="/login" className="text-blue-700">
+            Login
+          </Link>
         </p>
       </AuthLayout>
     </>

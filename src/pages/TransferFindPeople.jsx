@@ -2,7 +2,6 @@ import Header from "../Components/Header.jsx";
 import Sidebar from "../Components/SideBar.jsx";
 import SendBlue from "../assets/icons/sendBlue.svg";
 import Stepper from "../Components/Stepper.jsx";
-import PeopleInfo from "../Components/PeopleInfo.jsx";
 import FindPeopleList from "../Components/FindPeopleList.jsx";
 import Ghaluh1 from "../assets/profileGaluh.svg";
 import Search from "../assets/icons/Search.svg";
@@ -23,7 +22,7 @@ export default function FindPeople() {
       <Header />
       <div className="flex">
         <Sidebar
-          className="hidden md:block"
+          className=" md:block"
           activePage="transfer"
           isactive="transfer"
         />

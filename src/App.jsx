@@ -9,17 +9,31 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import FindPeople from "./pages/TransferFindPeople.jsx";
 import History from "./pages/History.jsx";
 import TopUp from "./pages/TopUp.jsx";
+import Profile from "./pages/Profile.jsx";
+import ChangePassword from "./pages/ChangePassword.jsx";
+import ChangePin from "./pages/ChangePin.jsx";
+import ProtectedRoute from "./Components/protectedRoute.jsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/profile/changePassword" element={<ChangePassword />} />
+          <Route path="/profile/changePin" element={<ChangePin />} />
           <Route path="/topUp" element={<TopUp />} />
           <Route path="/findPeople" element={<FindPeople />} />
           <Route path="/history" element={<History />} />
           <Route path="/findPeople/transfer/:id" element={<SetNominal />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/enterPin" element={<EnterPin />} />
