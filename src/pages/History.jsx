@@ -5,7 +5,6 @@ import Search from "../assets/icons/Search.svg";
 import { useSearchParams } from "react-router";
 import HistoryBlue from "../assets/icons/Historyblue.svg";
 
-// Pastikan kamu meng-import foto-foto ini sesuai lokasinya
 import Ghaluh from "../assets/profileGaluh.svg";
 import Profile1 from "../assets/profile1.svg";
 import Profile2 from "../assets/profile2.svg";
