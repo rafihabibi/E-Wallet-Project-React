@@ -14,12 +14,15 @@ import { saveUser } from "../utils/auth.js";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
+import { useState } from "react";
+import PopUpSucces from "../Components/PopUpSuccess.jsx";
+import Check from "../assets/checkLogin.png";
 
 const schemaRegister = Joi.object({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
-  password: Joi.string().min(8).required(),
+  password: Joi.string().min(6).required(),
   confirmPass: Joi.string()
     .valid(Joi.ref("password"))
     .min(8)
@@ -30,6 +33,10 @@ const schemaRegister = Joi.object({
 });
 
 function Register() {
+  const [popUpSucc, setPopUpSucc] = useState(false);
+  const handleSucces = () => {
+    setPopUpSucc(true);
+  };
   const {
     register,
     handleSubmit,
@@ -41,9 +48,7 @@ function Register() {
   const onSubmit = (data) => {
     const { email, password } = data;
     saveUser({ email, password });
-    window.alert("Already registered. Redirecting you to login page...");
-    navigate("/login");
-    console.log("disimpan:", data);
+    handleSucces();
   };
   return (
     <>
@@ -95,6 +100,12 @@ function Register() {
           )}
 
           <BtnSubmit label="Register" />
+          <PopUpSucces
+            image={Check}
+            info="Register,"
+            isOpen={popUpSucc}
+            onClose={() => setPopUpSucc(navigate("/login"))}
+          />
         </form>
         <p className="text-center m-2 text-[#4F5665]">
           Have An Account?

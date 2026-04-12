@@ -1,28 +1,32 @@
-import TransferSucces from "../assets/transferSucces.svg";
-
-export default function PopUpSucces({ isOpen, onClose }) {
+export default function PopUpSucces({
+  btnInfo2,
+  info,
+  image,
+  isOpen,
+  onClose,
+  textInfo,
+  textTransferTo,
+}) {
   return (
     <>
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-full max-w-md text-center">
-            <div className="border-b pb-4 mb-6 text-left">
+          <div className="bg-white rounded-lg p-4 w-fit h-fit text-center">
+            <div className="border-b pb-2 text-left">
               <p className="text-sm font-semibold text-gray-500 uppercase">
-                Transfer to Ghaluh 1
+                {textTransferTo}
               </p>
             </div>
-            <div className="pb-10">
-              <div className="flex justify-center mb-6">
-                <img src={TransferSucces} alt="" />
+            <div className="pb-5">
+              <div className="flex justify-center px-10">
+                <img src={image} alt="description" className="w-40" />
               </div>
               <div>
                 <h2 className="font-semibold">
-                  Yeay Transfer{" "}
-                  <span className="text-green-400 font-semibold">Success</span>
+                  {info}
+                  <span className="text-green-400 font-semibold"> Success</span>
                 </h2>
-                <p className="text-gray-400 text-sm mt-2">
-                  Thank you for using this application for your financial
-                </p>
+                <p className="text-gray-400 text-sm ">{textInfo}</p>
               </div>
             </div>
 
@@ -32,8 +36,8 @@ export default function PopUpSucces({ isOpen, onClose }) {
             >
               Done
             </button>
-            <button className="w-full bg-white text-primary border-primary py-4 rounded-xl font-bold mb-4 hover:bg-gray-300 cursor-pointer">
-              Transfer Again
+            <button className="w-full bg-white text-primary border-primary py-4 rounded-xl font-bold hover:bg-gray-300 cursor-pointer">
+              {btnInfo2}
             </button>
           </div>
         </div>

@@ -7,6 +7,7 @@ import PinPopUp from "../Components/pinPopUp.jsx";
 import Stepper from "../Components/Stepper.jsx";
 import Ghaluh from "../assets/profileGaluh.svg";
 import PopUpSucces from "../Components/PopUpSuccess.jsx";
+import TransferSucces from "../assets/transferSucces.svg";
 
 export default function SetNominal() {
   const [popUpPin, setPopUpPin] = useState(false);
@@ -77,7 +78,15 @@ export default function SetNominal() {
         onClose={() => setPopUpPin(false)}
         onSucces={handleSucces}
       />
-      <PopUpSucces isOpen={popUpSucc} onClose={() => setPopUpSucc(false)} />
+      <PopUpSucces
+        textTransferTo="Transfer to Ghaluh 1"
+        textInfo="Thank you for using this application for your financial"
+        info="Yeay Transfer"
+        image={TransferSucces}
+        btnInfo2="Transfer Again"
+        isOpen={popUpSucc}
+        onClose={() => setPopUpSucc(false)}
+      />
     </div>
   );
 }

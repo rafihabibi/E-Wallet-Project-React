@@ -1,3 +1,4 @@
+import { useState } from "react";
 import LogoEWallet from "../Components/LogoEWallet";
 import AuthLayout from "../Components/AuthLayout.jsx";
 import Heading from "../Components/HeadingAuth.jsx";
@@ -15,6 +16,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import Register from "./Register.jsx";
 import { getUser } from "../utils/auth.js";
+import PopUpSucces from "../Components/PopUpSuccess.jsx";
+import Check from "../assets/checkLogin.png";
 
 const schemaLogin = Joi.object({
   email: Joi.string()
@@ -24,6 +27,10 @@ const schemaLogin = Joi.object({
 });
 
 function Login() {
+  const [popUpSucc, setPopUpSucc] = useState(false);
+  const handleSucces = () => {
+    setPopUpSucc(true);
+  };
   const {
     register,
     handleSubmit,
@@ -55,11 +62,13 @@ function Login() {
       email === registerUser.email &&
       password === registerUser.password
     ) {
-      console.log("login succesful");
       localStorage.setItem("isLogin", "true");
+      handleSucces();
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
     }
-    navigate("/dashboard");
-    console.log(data);
   };
   // const {email, pass, errors, setEmail, setPass, validate} =useLogin();
   // const navigate = useNavigate();
@@ -118,6 +127,12 @@ function Login() {
             </Link>
           </p>
           <BtnSubmit label="Login" />
+          <PopUpSucces
+            info="Login, "
+            image={Check}
+            isOpen={popUpSucc}
+            onClose={() => setPopUpSucc(navigate("/dashboard"))}
+          />
         </form>
 
         <p className="text-center m-2 text-[#4F5665]">
