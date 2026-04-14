@@ -1,4 +1,3 @@
-import { useState } from "react";
 import LogoEWallet from "../Components/LogoEWallet";
 import AuthLayout from "../Components/AuthLayout.jsx";
 import Heading from "../Components/HeadingAuth.jsx";
@@ -14,10 +13,12 @@ import { Link, useNavigate } from "react-router";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
-import Register from "./Register.jsx";
 import { getUser } from "../utils/auth.js";
 import PopUpSucces from "../Components/PopUpSuccess.jsx";
 import Check from "../assets/checkLogin.png";
+import { useDispatch } from "react-redux";
+import { login } from "../store/authSlice.js";
+import usePopup from "../hooks/usePopUp.js";
 
 const schemaLogin = Joi.object({
   email: Joi.string()
@@ -27,10 +28,9 @@ const schemaLogin = Joi.object({
 });
 
 function Login() {
-  const [popUpSucc, setPopUpSucc] = useState(false);
-  const handleSucces = () => {
-    setPopUpSucc(true);
-  };
+  const { popUpSucc, popupOpen, popupClose } = usePopup();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -62,9 +62,8 @@ function Login() {
       email === registerUser.email &&
       password === registerUser.password
     ) {
-      localStorage.setItem("isLogin", "true");
-      handleSucces();
-
+      popupOpen();
+      dispatch(login());
       setTimeout(() => {
         navigate("/dashboard");
       }, 3000);
@@ -131,7 +130,10 @@ function Login() {
             info="Login, "
             image={Check}
             isOpen={popUpSucc}
-            onClose={() => setPopUpSucc(navigate("/dashboard"))}
+            onClose={() => {
+              popupClose();
+              navigate("/dashboard");
+            }}
           />
         </form>
 

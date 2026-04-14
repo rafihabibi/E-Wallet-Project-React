@@ -17,7 +17,7 @@ export default function Stepper({ isactive }) {
         </li>
       </Link>
       <div className="w-10 md:w-20 border-t-2 border-dashed border-[#EAEAEA]" />
-      <Link to="/findPeople/transfer/:id">
+      <Link to="/findPeople/transfer">
         <li
           className={`flex items-center gap-2 ${isactive === "set-nominal" ? "text-primary" : "text-[#AAAAAA]"}`}
         >

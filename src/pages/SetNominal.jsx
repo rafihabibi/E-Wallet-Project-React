@@ -10,14 +10,31 @@ import PopUpSucces from "../Components/PopUpSuccess.jsx";
 import TransferSucces from "../assets/transferSucces.svg";
 
 export default function SetNominal() {
+  const [errorMsg, setErrorMsg] = useState("");
+  const [amount, setAmount] = useState("");
   const [popUpPin, setPopUpPin] = useState(false);
   const [popUpSucc, setPopUpSucc] = useState(false);
   const handleSucces = () => {
     setPopUpPin(false);
     setPopUpSucc(true);
   };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+
+    if (amount < 10000) {
+      setErrorMsg("Minimal 10.000");
+      return;
+    } else if (amount > 10000000) {
+      setErrorMsg("Maksimal 10.000.000");
+      return;
+    } else {
+      setErrorMsg("");
+      setPopUpPin(true);
+    }
+  };
   return (
-    <div className="min-h-screen bg-[#FAFAFA] pb-13 md:pb-0">
+    <div className="min-h-screen bg-[#FAFAFA] pb-18 md:pb-0">
       <Header />
 
       <div className="flex">
@@ -38,38 +55,42 @@ export default function SetNominal() {
             <div className="bg-[#F9F9F9] rounded-xl p-5 mb-10 flex items-center justify-between">
               <PeopleInfo img={Ghaluh} />
             </div>
-            <div className="flex flex-col gap-8">
-              <div>
-                <label className="block text-[#7A7886] mb-2">Amount</label>
-                <p className="text-sm text-[#7A7886] mb-4">
-                  Type the amount you want to transfer...
-                </p>
-                <div className="relative">
-                  <input
-                    type="number"
-                    placeholder="Enter Nominal Transfer"
-                    className="w-full border border-border rounded-lg p-4 pl-12 focus:outline-primary"
-                  />
+            <form onSubmit={handelSubmit}>
+              <div className="flex flex-col gap-8">
+                <div>
+                  <label className="block text-[#7A7886] mb-2">Amount</label>
+                  <p className="text-sm text-[#7A7886] mb-4">
+                    Type the amount you want to transfer...
+                  </p>
+                  <div className="relative">
+                    <input
+                      onChange={(e) => setAmount(e.target.value)}
+                      type="number"
+                      placeholder="Enter Nominal Transfer"
+                      className="w-full border border-border rounded-lg p-4 pl-12 "
+                    />
+                    <p className="text-red-500 text-sm absolute -bottom-6 left-6">
+                      {errorMsg}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[#7A7886] mb-2">Notes</label>
+                  <textarea
+                    placeholder="Enter Some Notes"
+                    className="w-full border border-border rounded-lg p-4 h-32"
+                  ></textarea>
                 </div>
               </div>
-
-              <div>
-                <label className="block text-[#7A7886] mb-2">Notes</label>
-                <textarea
-                  placeholder="Enter Some Notes"
-                  className="w-full border border-border rounded-lg p-4 h-32 focus:outline-primary"
-                ></textarea>
+              <div className="flex justify-end mt-10">
+                <button
+                  type="submit"
+                  className="bg-primary text-white  py-4 rounded-xl  w-full hover:bg-blue-600 cursor-pointer"
+                >
+                  Submit & Transfer
+                </button>
               </div>
-            </div>
-
-            <div className="flex justify-end mt-10">
-              <button
-                onClick={() => setPopUpPin(true)}
-                className="bg-primary text-white  py-4 rounded-xl  w-full hover:bg-blue-600 cursor-pointer"
-              >
-                Submit & Transfer
-              </button>
-            </div>
+            </form>
           </div>
         </main>
       </div>

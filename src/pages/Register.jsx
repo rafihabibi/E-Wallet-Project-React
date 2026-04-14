@@ -14,9 +14,9 @@ import { saveUser } from "../utils/auth.js";
 import { useForm } from "react-hook-form";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { useState } from "react";
 import PopUpSucces from "../Components/PopUpSuccess.jsx";
 import Check from "../assets/checkLogin.png";
+import usePopup from "../hooks/usePopUp.js";
 
 const schemaRegister = Joi.object({
   email: Joi.string()
@@ -33,10 +33,7 @@ const schemaRegister = Joi.object({
 });
 
 function Register() {
-  const [popUpSucc, setPopUpSucc] = useState(false);
-  const handleSucces = () => {
-    setPopUpSucc(true);
-  };
+  const { popUpSucc, popupOpen, popupClose } = usePopup();
   const {
     register,
     handleSubmit,
@@ -48,7 +45,7 @@ function Register() {
   const onSubmit = (data) => {
     const { email, password } = data;
     saveUser({ email, password });
-    handleSucces();
+    popupOpen();
   };
   return (
     <>
@@ -104,7 +101,10 @@ function Register() {
             image={Check}
             info="Register,"
             isOpen={popUpSucc}
-            onClose={() => setPopUpSucc(navigate("/login"))}
+            onClose={() => {
+              popupClose();
+              navigate("/login");
+            }}
           />
         </form>
         <p className="text-center m-2 text-[#4F5665]">

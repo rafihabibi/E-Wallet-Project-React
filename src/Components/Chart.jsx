@@ -1,87 +1,117 @@
+/* eslint-disable react-hooks/static-components */
 import { useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function IncomeChart() {
-    const [chartType, setChartType] = useState("Income");
-    const incomeData = [
-        { day: 'Sat', value: 15000 },
-        { day: 'Sun', value: 1000 }, 
-        { day: 'Mon', value: 93000 }, 
-        { day: 'Tue', value: 31000 },
-        { day: 'Wed', value: 45000 },
-        { day: 'Thu', value: 25000 },
-        { day: 'Fri', value: 16000 },
-    ];
+  const [chartType, setChartType] = useState("Income");
 
-    const DataChart = [
-        { day: 'Sat', value: 20000 },
-        { day: 'Sun', value: 1000 }, 
-        { day: 'Mon', value: 100000 }, 
-        { day: 'Tue', value: 80000},
-        { day: 'Wed', value: 67000 },
-        { day: 'Thu', value: 21000 },
-        { day: 'Fri', value: 9000 },
-    ];
+  const incomeData = [
+    { day: "Sat", value: 15000 },
+    { day: "Sun", value: 1000 },
+    { day: "Mon", value: 93000 },
+    { day: "Tue", value: 31000 },
+    { day: "Wed", value: 45000 },
+    { day: "Thu", value: 25000 },
+    { day: "Fri", value: 16000 },
+  ];
 
-    const MAX_VALUE = 100000;
-    const activeData = chartType === "Income" ? incomeData : DataChart;
+  const expenseData = [
+    { day: "Sat", value: 20000 },
+    { day: "Sun", value: 1000 },
+    { day: "Mon", value: 100000 },
+    { day: "Tue", value: 80000 },
+    { day: "Wed", value: 67000 },
+    { day: "Thu", value: 21000 },
+    { day: "Fri", value: 9000 },
+  ];
 
-    return (
-        <div className="bg-white rounded-2xl shadow-sm border border-[#EAEAEA] p-6 w-full">
-            
-            <div className="flex items-center justify-between mb-8">
-                <h3 className="font-bold text-xl text-[#3A3D42]">Income Chart</h3>
-                
-                <div className="flex items-center gap-3">
-                    <select name="days" className="bg-[#F5F5F5] rounded-lg px-4 py-2 flex items-center gap-2 text-sm text-black">
-                        <option value="7"> 7 Days</option>
+  const activeData = chartType === "Income" ? incomeData : expenseData;
 
-                    </select>
-                    <select name="charType" className="bg-[#F5F5F5] rounded-lg px-4 py-2 flex items-center gap-2 text-sm text-black" onChange={(e) => setChartType(e.target.value)} value={chartType}>
-                        <option value="Income" >income</option>
-                        <option value="Expense">expense</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="relative h-65">  
-                <div className="absolute left-0 top-0 h-full flex flex-col justify-between py-1 text-sm text-[#7A7886] z-10 pr-2">
-                    <span>100.000+</span>
-                    <span>75.000</span>
-                    <span>50.000</span>
-                    <span>25.000</span>
-                    <span>0</span>
-                </div>
-
-                <div className="absolute inset-0 flex flex-col justify-between pl-16 z-0">
-                    <div className="w-full border-t border-dashed border-[#EAEAEA]" />
-                    <div className="w-full border-t border-dashed border-[#EAEAEA]" />
-                    <div className="w-full border-t border-dashed border-[#EAEAEA]" />
-                    <div className="w-full border-t border-dashed border-[#EAEAEA]" />
-                    <div className="w-full border-b border-[#EAEAEA]" /> 
-                </div>
-
-                <div className="ml-16 h-full flex items-end justify-between px-4 z-10 relative">
-                    {activeData.map((data, index) => {
-                        const barHeightPercentage = (data.value / MAX_VALUE) * 100;
-                        
-                        return (
-                            <div key={index} className="flex-1 flex flex-col items-center gap-4 h-full relative group justify-end">
-                                <div 
-                                    className="w-8 md:w-10 bg-primary rounded-t-lg transition-all duration-300"
-                                    style={{ height: `${barHeightPercentage}%` }} 
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            <div className="ml-16 flex items-center justify-between px-4 mt-2 text-sm text-[#7A7886]">
-                {activeData.map((data, index) => (
-                    <span key={index} className="flex-1 text-center">{data.day}</span>
-                ))}
-            </div>
-
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-3 rounded-lg shadow-sm border border-[#EAEAEA]">
+          <p className="font-bold text-[#3A3D42] mb-1">
+            {payload[0].payload.day}
+          </p>
+          <p className="text-primary text-sm font-semibold">
+            Rp {payload[0].value.toLocaleString("id-ID")}
+          </p>
         </div>
-    );
+      );
+    }
+    return null;
+  };
+
+  return (
+    <div className="bg-white rounded-2xl shadow-sm border border-[#EAEAEA] p-6 w-full">
+      <div className="flex items-center justify-between mb-8">
+        <h3 className="font-bold text-xl text-[#3A3D42]">Income Chart</h3>
+
+        <div className="flex items-center gap-3">
+          <select
+            name="days"
+            className="bg-[#F5F5F5] rounded-lg px-4 py-2 flex items-center gap-2 text-sm text-[#3A3D42] outline-none cursor-pointer"
+          >
+            <option value="7">7 Days</option>
+          </select>
+          <select
+            name="charType"
+            className="bg-[#F5F5F5] rounded-lg px-4 py-2 flex items-center gap-2 text-sm text-[#3A3D42] outline-none cursor-pointer"
+            onChange={(e) => setChartType(e.target.value)}
+            value={chartType}
+          >
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="h-62 w-full mt-4">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={activeData}
+            margin={{ top: 10, right: 0, left: -15, bottom: 0 }}
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#EAEAEA"
+            />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: "#7A7886", fontSize: 13 }}
+              dy={10}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: "#7A7886", fontSize: 13 }}
+              tickFormatter={(value) =>
+                value >= 1000 ? `${value / 1000}k` : value
+              }
+            />
+            // eslint-disable-next-line react-hooks/static-components
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: "#F9F9F9" }} />
+            <Bar
+              dataKey="value"
+              fill="#2948FF"
+              radius={[6, 6, 0, 0]}
+              barSize={35}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
 }

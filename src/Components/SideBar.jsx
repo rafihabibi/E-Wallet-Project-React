@@ -5,9 +5,18 @@ import History from "../assets/icons/historyIconGray.svg";
 import Upload from "../assets/icons/UploadGray.svg";
 import TwoUsers from "../assets/icons/twoUserGray.svg";
 import LogOut from "../assets/icons/LogOutIcon.svg";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/authSlice.js";
 
 export default function Sidebar({ activePage, isactive }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <aside className="fixed bottom-0 w-full bg-white z-50 border-t md:relative md:w-64 md:min-h-screen md:border-r md:border-t-0 md:border-[#EAEAEA]">
       <ul className="flex justify-around py-3 md:flex-col md:justify-start md:p-6 md:gap-4">
@@ -100,14 +109,13 @@ export default function Sidebar({ activePage, isactive }) {
           </li>
         </NavLink>
 
-        <NavLink to="/dashboard">
-          <li
-            className={`${activePage === "keluar" ? "bg-primary text-white hover:bg-blue-600" : "text-[#aaaaaa] hover:bg-gray-100"} flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl  text-[#AAAAAA] cursor-pointer`}
-          >
-            <img src={LogOut} alt="lOGOUT" />
-            <span className="hidden md:block">Keluar</span>
-          </li>
-        </NavLink>
+        <li
+          onClick={handleLogout}
+          className="flex flex-col items-center md:flex-row md:gap-4 p-3 rounded-xl text-[#AAAAAA] hover:bg-red-50 hover:text-red-600 cursor-pointer transition-all"
+        >
+          <img src={LogOut} alt="lOGOUT" />
+          <span className="hidden md:block">Keluar</span>
+        </li>
       </ul>
     </aside>
   );

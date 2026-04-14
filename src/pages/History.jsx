@@ -121,7 +121,7 @@ export default function History() {
           className="hidden md:block"
         />
 
-        <main className="flex-1 p-4 md:p-8">
+        <main className="flex-1 p-4 md:p-8 pb-15">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-primary text-2xl"></span>
             <img src={HistoryBlue} alt="" />

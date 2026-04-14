@@ -58,7 +58,7 @@ function Dashboard() {
     },
   ];
   return (
-    <div className="pb-12 md:pb-0">
+    <div className="pb-18 md:pb-0">
       <Header />
       <div className="flex">
         <Sidebar className="hidden md:block" activePage="dashboard" />

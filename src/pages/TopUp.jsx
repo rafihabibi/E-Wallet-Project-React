@@ -21,7 +21,7 @@ export default function TopUp() {
             <img src={Upload} alt="Top Up" />
             <h2>Top Up Account</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-4 pb-10">
             <div className="col-span-2 border border-border px-4">
               <h2 className=" font-bold text-xl py-3 px-1">
                 Account Information
