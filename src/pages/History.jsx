@@ -112,7 +112,7 @@ export default function History() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-[#FAFAFA] pb-8 md:pb-0">
       <Header />
       <div className="flex">
         <Sidebar

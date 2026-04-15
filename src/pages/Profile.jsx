@@ -13,7 +13,7 @@ import ButtonSubmit from "../Components/ButtonSubmit.jsx";
 
 export default function Profile() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-[#FAFAFA] pb-20 md:pb-0">
       <Header />
       <div className="flex">
         <Sidebar

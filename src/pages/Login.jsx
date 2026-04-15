@@ -66,7 +66,7 @@ function Login() {
       dispatch(login());
       setTimeout(() => {
         navigate("/dashboard");
-      }, 3000);
+      }, 1000);
     }
   };
   // const {email, pass, errors, setEmail, setPass, validate} =useLogin();
